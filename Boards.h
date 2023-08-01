@@ -1100,6 +1100,26 @@ writePort(port, value, bitmask):  Write an 8 bit port.
 #define PIN_TO_PWM(p)           PIN_TO_DIGITAL(p)
 #define PIN_TO_SERVO(p)         (p)
 
+  //Arduino UNO R4 Minima
+#elif defined(ARDUINO_UNOR4_MINIMA)
+#define TOTAL_ANALOG_PINS       6
+#define TOTAL_PINS              22 // 
+#define TOTAL_PORTS             3
+#define VERSION_BLINK_PIN       LED_BUILTIN //25
+#define PIN_SERIAL1_RX          0
+#define PIN_SERIAL1_TX          1
+#define IS_PIN_DIGITAL(p)       ((p)>= 0 && (p)<=13)
+#define IS_PIN_ANALOG(p)        ((p) >= 14 && (p) < 19)
+#define IS_PIN_PWM(p)           digitalPinHasPWM(p)
+#define IS_PIN_SERVO(p)         (p)
+#define IS_PIN_I2C(p)           ((p) == 18 || (p) == 19)
+#define IS_PIN_SPI(p)           ((p) == SS || (p) == MOSI || (p) == MISO || (p) == SCK)
+#define IS_PIN_SERIAL(p)        ((p) == 0 || (p) == 1)
+#define PIN_TO_DIGITAL(p)       (p)
+#define PIN_TO_ANALOG(p)        (p) - 14
+#define PIN_TO_PWM(p)           PIN_TO_DIGITAL(p)
+#define PIN_TO_SERVO(p)         (p)
+
 
 // anything else
 #else
